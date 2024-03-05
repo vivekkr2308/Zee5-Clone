@@ -1,0 +1,130 @@
+.card,
+.cards {
+	width: 100%;
+	position: relative;
+	transition: all 0.25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+	overflow: hidden;
+	border-block: 10px solid transparent;
+	border-radius: 8px;
+	padding-right: 5px;
+}
+
+.card img {
+	width: 100%;
+	object-fit: cover;
+	object-position: top center;
+	border-radius: 8px;
+	display: block;
+	aspect-ratio: 2/3;
+	transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.title {
+	background-color: inherit;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-weight: bold;
+	font-size: 0.6rem;
+	color: #333;
+}
+
+.cards .title {
+	white-space: initial;
+}
+
+.cards .title {
+	font-size: 0.8rem;
+}
+
+.cardPopup {
+	position: absolute;
+	opacity: 0;
+	visibility: hidden;
+	bottom: 0;
+	text-align: left;
+	left: 0;
+	right: 0;
+	margin-top: auto;
+	z-index: 100;
+	filter: blur(20px);
+	padding: 10px 10px 0;
+	background-color: white;
+	color: black;
+	transform: scaleX(0) translateZ(0) perspective(0);
+}
+
+.cards .cardPopup {
+	right: 0;
+	top: 0;
+	left: 50%;
+}
+
+.bottom {
+	display: flex;
+	padding-block: 10px;
+	align-items: center;
+	gap: 10px;
+}
+
+.bottom span {
+	font-size: 0.7rem;
+}
+
+/* ! MEDIA QUERIES */
+
+@media screen and (min-width: 638px) {
+	.card {
+		padding: 0 5px;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.cards:hover,
+	.card:hover {
+		padding: 0 10px 3px;
+		z-index: 100;
+		border-block: 10px solid white;
+		background-color: white;
+		transition: all 0.25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+		transform: scale3d(1.2, 1.2, 1) translateZ(0) perspective(500px);
+		transition-delay: 400ms;
+	}
+
+	.card:hover img {
+		transition: border-radius 0.25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+		transition-delay: 0.4s;
+	}
+
+	.cards:hover {
+		transform: scale3d(1, 1.2, 1) translateZ(0) perspective(500px);
+	}
+
+	.cards:hover .cardPopup,
+	.card:hover .cardPopup {
+		padding-inline: 10px;
+		opacity: 1;
+		visibility: visible;
+		transition: all 0.25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+		transition-delay: 400ms;
+		filter: blur(0);
+		transform: scaleX(1) translateZ(0) perspective(0);
+	}
+
+	.cards:hover .cardPopup {
+		padding-inline: 10px 30px;
+	}
+
+	.cards:hover .cardPopup {
+		transform: scaleX(1.2) translateZ(0) perspective(0);
+	}
+
+	.cards img {
+		transition: all 0.25s ease-in;
+	}
+
+	.cards:hover img {
+		transform: scale3d(1.2, 1, 1) translateZ(0) perspective(500px);
+		transition-delay: 400ms;
+	}
+}
